@@ -46,10 +46,13 @@ async function getWeatherData(city) {
 }
 
 function updateUI(data) {
+  console.log(forecastDays.length);  // 5
+  console.log(data.list.length);     // 40 = 5-day forecast
   // Displaying the current weather details
   const current = data.list[0];
   const cityName = data.city.name;
-  const temperature = Math.round(current.main.temp - 273.15);
+  // Convert temperature from Kelvin to Fahrenheit
+  const temperature = Math.round(((current.main.temp - 273.15) * 9/5) + 32);
   const windSpeed = current.wind.speed;
   const humidity = current.main.humidity;
   const currentIconUrl = `https://openweathermap.org/img/wn/${current.weather[0].icon}.png`;
@@ -64,23 +67,28 @@ function updateUI(data) {
 
   // Displaying the next 5 days of forecast
   for (let i = 1; i <= 5; i++) {
-    const dailyForecast = data.list[i * 8]; // Using 8 because each day has 8 entries (every 3 hours)
+    const dailyForecast = data.list[(i - 1) * 8 + 7];
 
-    const dayTemperature = Math.round(dailyForecast.main.temp - 273.15);
-    const dayWindSpeed = dailyForecast.wind.speed;
-    const dayHumidity = dailyForecast.main.humidity;
-    const dayIconUrl = `https://openweathermap.org/img/wn/${dailyForecast.weather[0].icon}.png`;
+    if (dailyForecast) {
+      // Just in case... 
+      const dayTemperature = Math.round(((dailyForecast.main.temp - 273.15) * 9/5) + 32);
+        const dayWindSpeed = dailyForecast.wind.speed;
+        const dayHumidity = dailyForecast.main.humidity;
+        const dayIconUrl = `https://openweathermap.org/img/wn/${dailyForecast.weather[0].icon}.png`;
 
-    forecastDays[i - 1].innerHTML = `
-      <div class="forecast-item">
-        <h4>Day ${i}</h4>
-        <img src="${dayIconUrl}" alt="${dailyForecast.weather[0].description}">
-        <p>Temperature: ${dayTemperature}°C</p>
-        <p>Wind Speed: ${dayWindSpeed} m/s</p>
-        <p>Humidity: ${dayHumidity}%</p>
-      </div>
-    `;
-  }
+        forecastDays[i - 1].innerHTML = `
+            <div class="forecast-item">
+                <h4>Day ${i}</h4>
+                <img src="${dayIconUrl}" alt="${dailyForecast.weather[0].description}">
+                <p>Temperature: ${dayTemperature}°C</p>
+                <p>Wind Speed: ${dayWindSpeed} m/s</p>
+                <p>Humidity: ${dayHumidity}%</p>
+            </div>
+        `;
+    } else {
+        console.error(`No forecast data found for day ${i}`);
+    }
+}
 }
 
 cityForm.addEventListener('submit', event => {
