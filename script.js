@@ -60,7 +60,7 @@ function updateUI(data) {
   currentWeather.innerHTML = `
     <h2>${cityName}</h2>
     <img src="${currentIconUrl}" alt="${current.weather[0].description}">
-    <p>Temperature: ${temperature}°C</p>
+    <p>Temperature: ${temperature}°F</p>
     <p>Wind Speed: ${windSpeed} m/s</p>
     <p>Humidity: ${humidity}%</p>
   `;
@@ -80,7 +80,7 @@ function updateUI(data) {
             <div class="forecast-item">
                 <h4>Day ${i}</h4>
                 <img src="${dayIconUrl}" alt="${dailyForecast.weather[0].description}">
-                <p>Temperature: ${dayTemperature}°C</p>
+                <p>Temperature: ${dayTemperature}°F</p>
                 <p>Wind Speed: ${dayWindSpeed} m/s</p>
                 <p>Humidity: ${dayHumidity}%</p>
             </div>
