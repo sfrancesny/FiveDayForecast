@@ -29,10 +29,10 @@ Future Weather Outlook - 5-day forecast for the chosen city.
 Local Storage / Search History Interaction - Users can then revisit the weather data from previously searched cities by clicking on city name
 
  ## Screenshots
-<img src=""/>
-<img src=""/> 
+<img src="module6_FiveDayForecast1.png"/>
+<img src="module6_FiveDayForecast0.png"/> 
 
-Link: 
+Link: https://sfrancesny.github.io/FiveDayForecast/
 
 ## Resources
 Xpert Learning Assistant
