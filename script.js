@@ -6,8 +6,8 @@ const searchHistory = document.getElementById('searchHistory');
 const currentWeather = document.getElementById('city-info');
 const forecast = document.getElementById('forecast');
 const forecastDays = forecast.querySelectorAll('.forecast-day');
-
-// references the clearSearches button
+const asideContent = document.getElementById('asideContent');
+const toggleAsideBtn = document.getElementById('toggleAsideBtn');
 const clearSearchesBtn = document.getElementById('clearSearches');
 
 let cities = JSON.parse(localStorage.getItem('cities')) || [];
@@ -109,3 +109,22 @@ clearSearchesBtn.addEventListener('click', () => {
 });
 
 updateSearchHistory();
+
+window.addEventListener('resize', function() {
+  if (window.innerWidth <= 768) {
+      asideContent.style.display = 'none';
+  } else {
+      asideContent.style.display = 'block';
+  }
+});
+
+toggleAsideBtn.addEventListener('click', function() {
+  if (asideContent.style.display === 'none' || getComputedStyle(asideContent).display === 'none') {
+      asideContent.style.display = 'block';
+      document.body.classList.remove('aside-closed');
+  } else {
+      asideContent.style.display = 'none';
+      document.body.classList.add('aside-closed');
+  }
+});
+
