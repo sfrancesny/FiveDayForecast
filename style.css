@@ -1,3 +1,4 @@
+/* base styles for the <body> */
 body {
   font-family: 'Lato', Arial, sans-serif;
   margin: 0;
@@ -10,11 +11,13 @@ body.aside-closed aside {
   display: none;
 }
 
+/* expands the content area to full width when aside is closed */
 body.aside-closed #content-area {
   flex: 1;
   width: 100%;
 }
 
+/* <header> styles */
 header {
   background-color: #2C3E50;
   color: white;
@@ -23,6 +26,7 @@ header {
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+/* <main> content area layout */
 main {
   display: flex;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -31,6 +35,7 @@ main {
   overflow: hidden;
 }
 
+/* styles for <aside> section */
 aside {
   flex-basis: 25%; 
   border-right: 1px solid #ddd;
@@ -41,7 +46,9 @@ aside {
   background-color: #FDF5E6;
 }
 
+/*screens up to 768px width */
 @media (max-width: 768px) {
+  /* <main> content + <aside> stack vertically */
   main {
       flex-direction: column;
   }
@@ -52,14 +59,20 @@ aside {
   #content-area {
       height: auto; 
   }
-}
 
-@media (max-width: 768px) {
+  /* hides the <aside> content */
   #asideContent {
       display: none;
   }
+
+  .forecast-item {
+      display: block;
+      width: 100%;
+      overflow-x: hidden;
+  }
 }
 
+/* button to toggle the visibility of the <aside> */
 button#toggleAsideBtn {
   position: absolute;
   top: 20px;
@@ -73,10 +86,12 @@ button#toggleAsideBtn {
   z-index: 999; /* the button will stay on top of elements */
 }
 
+/* hover effect */
 button#toggleAsideBtn:hover {
   background-color: #34495E;
 }
 
+/* <main> content area styles */
 #content-area {
   flex: 1;
   display: flex;
@@ -85,6 +100,7 @@ button#toggleAsideBtn:hover {
   background-color: #F4F6F6;
 }
 
+/* city information styling */
 #city-info {
   flex-basis: 35%;
   overflow-y: auto; 
@@ -94,17 +110,17 @@ button#toggleAsideBtn:hover {
   border-bottom: 1px solid #ddd;
 }
 
+/* styles for the forecast container */
 .forecast-container {
   background-color: #FDF5E6;
-  /* padding: 10px; */
 }
 
+/* styles for individual forecast sections */
 #forecast {
   flex: .8;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
-  /* padding: 1em 0; */
   overflow-y: auto;
 }
 
@@ -112,19 +128,13 @@ h3 {
   text-align: center;
 }
 
+/* styling each forecast item */
 .forecast-item {
   display: inline-block;
   max-width: 100%;
 }
 
-@media (max-width: 768px) {
-  .forecast-item {
-      display: block;
-      width: 100%;
-      overflow-x: hidden;
-  }
-}
-
+/* styles for each day in the forecast */
 .forecast-day {
   flex: 1;
   text-align: center;
@@ -139,6 +149,7 @@ h3 {
   max-width: 100%;
 }
 
+/* overlay header on the forecast day */
 .forecast-day h3 {
   position: absolute;
   top: 0;
@@ -148,6 +159,7 @@ h3 {
   background-color: #FDF5E6;
 }
 
+/* styles for each city in the search history */
 .history-item {
   padding: 0.5em;
   margin: 0.5em 0;
@@ -160,11 +172,13 @@ h3 {
   align-items: center;
 }
 
+/* hover effect */
 .history-item:hover {
   background-color:	#BA55D3;
   transform: scale(1.02);
 }
 
+/* form layout */
 #city-form {
   margin-bottom: 1em;
   display: flex;
@@ -172,12 +186,14 @@ h3 {
   gap: 10px;
 }
 
+/* input box styles*/
 #city-input {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
+/* button styles for submitting city search */
 #submit-button {
   padding: 10px 20px;
   background-color: #2C3E50;
@@ -188,10 +204,12 @@ h3 {
   transition: background-color 0.3s;
 }
 
+/* hover effect */
 #submit-button:hover {
   background-color: #34495E;
 }
 
+/* button styles for other search actions */
 .search-button {
   padding: 10px 20px;
   background-color: #00BFFF;
@@ -202,21 +220,19 @@ h3 {
   transition: background-color 0.3s;
 }
 
+/* hover effect */
 .search-button:hover {
   background-color:	#1E90FF; 
 }
 
+/* button styles for clearing search history */
 #clearSearches {
   padding: 10px 20px;
   background-color: #E74C3C;
   color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: 10px;
 }
 
+/* hover effect */
 #clearSearches:hover {
   background-color: #C0392B;
 }
