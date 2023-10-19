@@ -48,6 +48,7 @@ async function getWeatherData(city) {
 function updateUI(data) {
   console.log(forecastDays.length);  // 5
   console.log(data.list.length);     // 40 = 5-day forecast
+  
   // Displaying the current weather details
   const current = data.list[0];
   const cityName = data.city.name;
@@ -70,25 +71,26 @@ function updateUI(data) {
     const dailyForecast = data.list[(i - 1) * 8 + 7];
 
     if (dailyForecast) {
-      // Just in case... 
+      const forecastDate = new Date(dailyForecast.dt_txt);
+      const formattedDate = `${forecastDate.getMonth() + 1}/${forecastDate.getDate()}/${forecastDate.getFullYear()}`;
       const dayTemperature = Math.round(((dailyForecast.main.temp - 273.15) * 9/5) + 32);
-        const dayWindSpeed = dailyForecast.wind.speed;
-        const dayHumidity = dailyForecast.main.humidity;
-        const dayIconUrl = `https://openweathermap.org/img/wn/${dailyForecast.weather[0].icon}.png`;
+      const dayWindSpeed = dailyForecast.wind.speed;
+      const dayHumidity = dailyForecast.main.humidity;
+      const dayIconUrl = `https://openweathermap.org/img/wn/${dailyForecast.weather[0].icon}.png`;
 
-        forecastDays[i - 1].innerHTML = `
-            <div class="forecast-item">
-                <h4>Day ${i}</h4>
-                <img src="${dayIconUrl}" alt="${dailyForecast.weather[0].description}">
-                <p>Temperature: ${dayTemperature}°F</p>
-                <p>Wind Speed: ${dayWindSpeed} m/s</p>
-                <p>Humidity: ${dayHumidity}%</p>
-            </div>
-        `;
+      forecastDays[i - 1].innerHTML = `
+        <div class="forecast-item">
+          <h4>${formattedDate}</h4>
+          <img src="${dayIconUrl}" alt="${dailyForecast.weather[0].description}">
+          <p>Temperature: ${dayTemperature}°F</p>
+          <p>Wind Speed: ${dayWindSpeed} m/s</p>
+          <p>Humidity: ${dayHumidity}%</p>
+        </div>
+      `;
     } else {
-        console.error(`No forecast data found for day ${i}`);
+      console.error(`No forecast data found for day ${i}`);
     }
-}
+  }
 }
 
 cityForm.addEventListener('submit', event => {
@@ -107,11 +109,3 @@ clearSearchesBtn.addEventListener('click', () => {
 });
 
 updateSearchHistory();
-
-
-
-
-
-
-
-
