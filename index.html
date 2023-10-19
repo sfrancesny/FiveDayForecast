@@ -1,11 +1,13 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
+    <!-- Link to the Font Awesome library for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Set the title for the webpage -->
     <title>Weather Dashboard</title>
 </head>
 <body>
@@ -13,13 +15,15 @@
         <h1>Weather Dashboard</h1>
     </header>
     <main>
+        <!-- Button for toggling the aside -->
         <div>
             <button id="toggleAsideBtn">
                 <i class="fas fa-bars"></i>
             </button>
-        </div>        
+        </div>
         <aside>
             <div id="asideContent">
+                <!-- Form to input and search for a city's weather -->
                 <form id="city-form">
                     <label for="city-input">Search for a City:</label>
                     <input type="text" id="city-input" placeholder="Enter city name">
@@ -29,42 +33,50 @@
                 <div id="searchHistory"></div>
             </div>
         </aside>
+
         <div id="content-area"> 
+            <!-- Displays selected city's current weather details -->
             <section id="city-info" class="city-info">
                 <h2>City Name</h2>
                 <p>[ Temperature ]</p>
                 <p>[ Wind ]</p>
                 <p>[ Humidity ]</p>
             </section>
+            <!-- Container for the 5-day forecast header -->
             <div class="forecast-container">
                 <h3>5-Day Forecast:</h3>
-            </div>            
-
+            </div>
+            <!-- Display 5-day forecast for the selected city -->
             <section id="forecast">
+                <!-- Day 1 forecast data -->
                 <div class="forecast-day">
                     <div class="forecast-item">
                         <h4>[ Day 1 ]</h4>
                         <p>[ Forecast Data ]</p>
                     </div>
                 </div>
+                <!-- Day 2 forecast data -->
                 <div class="forecast-day">
                     <div class="forecast-item">
                         <h4>[ Day 2 ]</h4>
                         <p>[ Forecast Data ]</p>
                     </div>
                 </div>
+                <!-- Day 3 forecast data -->
                 <div class="forecast-day">
                     <div class="forecast-item">
                         <h4>[ Day 3 ]</h4>
                         <p>[ Forecast Data ]</p>
                     </div>
                 </div>
+                <!-- Day 4 forecast data -->
                 <div class="forecast-day">
                     <div class="forecast-item">
                         <h4>[ Day 4 ]</h4>
                         <p>[ Forecast Data ]</p>
                     </div>
                 </div>
+                <!-- Day 5 forecast data -->
                 <div class="forecast-day">
                     <div class="forecast-item">
                         <h4>[ Day 5 ]</h4>
@@ -76,6 +88,7 @@
 
     </main>
 
+    <!-- Link to the external JavaScript file -->
     <script src="script.js"></script>
 </body>
 
